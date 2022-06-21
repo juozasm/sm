@@ -4,13 +4,13 @@ import { Post } from '../common/types';
 import useAPIDataFlow from '../common/hooks/useAPIDataFlow';
 
 const usePosts = ({ page, sl_token }: GetPostsParams) => {
-    const { state, request, success, failure } = useAPIDataFlow<Post>();
+    const { state, request, success, failure } = useAPIDataFlow<Post[]>();
 
     const getPosts = useCallback(async (params: GetPostsParams) => {
         try {
             request();
             const response = await getPostsApiRequest(params);
-            success(response.data.data);
+            success(response.data.data.posts);
         } catch (error: any) {
             failure(error?.toString() ?? 'Something went wrong while registering');
         }
