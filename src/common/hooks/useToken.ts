@@ -5,7 +5,15 @@ const useToken = () => {
     const context = useContext(TokenContext);
     return {
         token: context?.[0],
-        setToken: useCallback((token: string) => context?.[1](token), [context]),
+        setToken: useCallback(
+            (token: string) => {
+                if (context?.[1]) {
+                    context[1](token);
+                    localStorage.setItem('token', token);
+                }
+            },
+            [context]
+        ),
     };
 };
 

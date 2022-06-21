@@ -6,7 +6,7 @@ type TokenProviderProps = {
     children: ReactNode;
 };
 const TokenProvider = ({ children }: TokenProviderProps) => {
-    const [token, setToken] = useState<string | undefined>();
+    const [token, setToken] = useState<string | undefined>(localStorage.getItem('token') ?? undefined);
     return <TokenContext.Provider value={[token, setToken]}>{children}</TokenContext.Provider>;
 };
 

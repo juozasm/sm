@@ -28,4 +28,9 @@ export type GetPostsParams = {
     page: number;
 };
 
-export const getPosts = (params: GetPostsParams) => instance.get<ResponseStructure<Post>>('/posts', { params });
+export type GetPostsResponse = ResponseStructure<{
+    page: number;
+    posts: Post[];
+}>;
+
+export const getPosts = (params: GetPostsParams) => instance.get<GetPostsResponse>('/posts', { params });
