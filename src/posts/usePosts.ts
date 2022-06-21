@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
-import { getPosts as getPostsApiRequest, GetPostsParams } from '../services/api';
-import { Post } from '../types';
-import useAPIDataFlow from './useAPIDataFlow';
+import { getPosts as getPostsApiRequest, GetPostsParams } from '../common/services/api';
+import { Post } from '../common/types';
+import useAPIDataFlow from '../common/hooks/useAPIDataFlow';
 
 const usePosts = ({ page, sl_token }: GetPostsParams) => {
     const { state, request, success, failure } = useAPIDataFlow<Post>();

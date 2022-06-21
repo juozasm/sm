@@ -1,38 +1,37 @@
-import useRegister from './hooks/useRegister';
-import usePosts from './hooks/usePosts';
+import './base.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './login';
+import Posts from './posts';
+import TokenProvider from './common/contexts/TokenProvider';
+import { PropsWithChildren } from 'react';
+import useToken from './common/hooks/useToken';
 
-import logo from './logo.svg';
-import { GetPostsParams } from './services/api';
-import { useEffect } from 'react';
-
-const Posts = ({ params }: { params: GetPostsParams }) => {
-    const { state } = usePosts(params);
-    return <>{JSON.stringify(state.data)}</>;
+export const ProtectedRoute = ({ children }: PropsWithChildren) => {
+    const { token } = useToken();
+    if (!token) {
+        return <Navigate to="/login" />;
+    }
+    return <>{children}</>;
 };
 
-function App() {
-    const { register, state } = useRegister();
-
-    useEffect(() => {
-        register({
-            client_id: 'ju16a6m81mhid5ue1z3v2g0uh',
-            email: 'abc@gmail.com',
-            name: 'Juozas',
-        });
-    }, []);
+const App = () => {
     return (
-        <div>
-            <img src={logo} className="App-logo" alt="logo" />
-            {state.data && !state.isLoading && (
-                <Posts
-                    params={{
-                        sl_token: state.data.sl_token,
-                        page: 1,
-                    }}
-                />
-            )}
-        </div>
+        <TokenProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <ProtectedRoute>
+                                <Posts />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/login" element={<Login />} />
+                </Routes>
+            </BrowserRouter>
+        </TokenProvider>
     );
-}
+};
 
 export default App;
