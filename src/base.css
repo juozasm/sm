@@ -1,9 +1,53 @@
+:root {
+    --grey-color: #ccc;
+    --white-color: #fff;
+    --black-color: rgb(7, 7, 7);
+}
+
 html {
     box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--black-color);
 }
 
 *,
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+input {
+    outline: 0;
+    border: 1px solid var(--grey-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: 1px solid var(--black-color);
+}
+
+button {
+    cursor: pointer;
+}
+
+.button-primary {
+    color: var(--white-color);
+    border: 1px solid var(--black-color);
+    background-color: var(--black-color);
+    box-shadow: none;
+}
+
+.button-primary:hover {
+    color: var(--black-color);
+    border: 1px solid var(--black-color);
+    background-color: var(--white-color);
+}
+
+.button-primary:focus {
+    outline: 1px solid var(--white-color);
 }
