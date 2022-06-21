@@ -1,45 +1,38 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import useRegister from './hooks/useRegister';
+import usePosts from './hooks/usePosts';
+
+import logo from './logo.svg';
+import { GetPostsParams } from './services/api';
+import { useEffect } from 'react';
+
+const Posts = ({ params }: { params: GetPostsParams }) => {
+    const { state } = usePosts(params);
+    return <>{JSON.stringify(state.data)}</>;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+    const { register, state } = useRegister();
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    useEffect(() => {
+        register({
+            client_id: 'ju16a6m81mhid5ue1z3v2g0uh',
+            email: 'abc@gmail.com',
+            name: 'Juozas',
+        });
+    }, []);
+    return (
+        <div>
+            <img src={logo} className="App-logo" alt="logo" />
+            {state.data && !state.isLoading && (
+                <Posts
+                    params={{
+                        sl_token: state.data.sl_token,
+                        page: 1,
+                    }}
+                />
+            )}
+        </div>
+    );
 }
 
-export default App
+export default App;
