@@ -16,7 +16,8 @@ Tested only most difficult functions. Could be added react testing library for i
 ## To run app
 
 1. npm install
-2. npm run dev
+2. npm run 
+3. The app should start on http://localhost:3000
 
 ## To build app
 
