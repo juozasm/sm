@@ -94,6 +94,11 @@ describe('mapAndFilterPostsToSenders', () => {
         expect(senders[0][1].from_name).toBe('abc');
         expect(senders[0][1].count).toBe(2);
     });
+    it('should filter senders, by search query', () => {
+        const senders = mapAndFilterPostsToSenders(postsFixture, 'ab');
+        expect(senders.length).toBe(2);
+        expect(senders[0][0]).toBe('user_111');
+    });
 });
 
 describe('orderPostsByCreationDate', () => {
