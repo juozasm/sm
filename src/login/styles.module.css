@@ -20,3 +20,10 @@
     display: block;
     margin-bottom: 1rem;
 }
+
+.logo {
+    position: absolute;
+    height: 20vh;
+    top: 3rem;
+    left: 0;
+}

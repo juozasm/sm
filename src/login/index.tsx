@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import useToken from '../common/hooks/useToken';
 import useRegister from './useRegister';
 import styles from './styles.module.css';
+import logo from '../logo.svg';
 
 const CLIENT_ID = 'ju16a6m81mhid5ue1z3v2g0uh';
 
@@ -27,10 +28,11 @@ const Login = () => {
 
     return (
         <div className={styles.login}>
+            <img className={styles.logo} src={logo} alt="Supermetrics logo" />
             <h1>Login</h1>
             <form className={styles.form} onSubmit={onSubmit}>
                 <input placeholder="Enter you're name" type="text" name="name" />
-                <input placeholder="Enter you're email"  type="email" name="email" />
+                <input placeholder="Enter you're email" type="email" name="email" />
                 <button className="button-primary" type="submit">
                     Go
                 </button>
