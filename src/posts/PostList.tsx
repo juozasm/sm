@@ -33,8 +33,8 @@ const PostList = ({ posts, from_id }: Props) => {
             </div>
             {filteredAndSortedPosts.map(({ created_time, message }) => (
                 <div className={styles.listItem}>
-                    <div>{created_time}</div>
-                    <div>{message}</div>
+                    <div className={styles.date}>{new Date(created_time).toLocaleString()}</div>
+                    <div className={styles.message}>{message}</div>
                 </div>
             ))}
         </div>

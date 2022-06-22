@@ -25,8 +25,16 @@
     border-radius: 0.25rem;
 }
 
-.listItem {
+.date {
+    border-bottom: 1px solid var(--dark-grey-color);
     padding: 0.5rem;
+}
+
+.message {
+    padding: 0.5rem;
+}
+
+.listItem {
     background-color: var(--grey-color);
     color: var(--black-color);
     text-decoration: none;
