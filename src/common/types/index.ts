@@ -10,13 +10,5 @@ export type Post = {
     from_id: string;
     message: string;
     type: string;
-    status: string;
     created_time: string;
-};
-
-export type SendersObject = {
-    [from_name: string]: {
-        from_id: Post['from_id'];
-        count: number;
-    };
 };

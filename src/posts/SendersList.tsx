@@ -22,14 +22,14 @@ const SendersList = ({ posts, from_id, handleSenderClick }: Props) => {
                 type="search"
                 onChange={(e) => setSearchString(e.target.value)}
             />
-            {senders.map(([from_name, data]) => (
+            {senders.map(([currentUser_from_id, data]) => (
                 <a
                     href="#"
-                    className={cx(styles.listItem, data.from_id === from_id && styles.activeListItem)}
-                    onClick={handleSenderClick(data.from_id)}
-                    key={from_name}
+                    className={cx(styles.listItem, currentUser_from_id === from_id && styles.activeListItem)}
+                    onClick={handleSenderClick(currentUser_from_id)}
+                    key={currentUser_from_id}
                 >
-                    {from_name} {data.count}
+                    {data.from_name} {data.count}
                 </a>
             ))}
         </div>

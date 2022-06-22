@@ -31,10 +31,10 @@ const Posts = () => {
     );
 
     if (state.isLoading) {
-        return 'Loading...';
+        return <div>Loading...</div>;
     }
     if (!state.data) {
-        return 'Something went wrong...';
+        return <div>Something went wrong...</div>;
     }
     return (
         <div className={styles.container}>

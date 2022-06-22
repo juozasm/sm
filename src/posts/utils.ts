@@ -24,20 +24,20 @@ export const filterPosts = (posts: Post[], from_id: string, searchString?: strin
         }
         return false;
     });
-export const mapAndFilterPostsToSenders = (posts: Post[], searchString: string) =>
-    Object.entries(groupBy<Post>(posts, 'from_name'))
+export const mapAndFilterPostsToSenders = (posts: Post[], searchString?: string) =>
+    Object.entries(groupBy<Post>(posts, 'from_id'))
         .map(
-            ([from_name, data]) =>
+            ([from_id, data]) =>
                 [
-                    from_name,
+                    from_id,
                     {
                         count: data.length,
-                        from_id: data[0].from_id,
+                        from_name: data[0].from_name,
                     },
                 ] as [
                     string,
                     {
-                        from_id: Post['from_id'];
+                        from_name: Post['from_name'];
                         count: number;
                     }
                 ]
