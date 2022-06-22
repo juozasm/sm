@@ -31,12 +31,14 @@ const PostList = ({ posts, from_id }: Props) => {
                     onChange={(e) => setSearchString(e.target.value)}
                 />
             </div>
-            {filteredAndSortedPosts.map(({ created_time, message }) => (
-                <div className={styles.listItem}>
-                    <div className={styles.date}>{new Date(created_time).toLocaleString()}</div>
-                    <div className={styles.message}>{message}</div>
-                </div>
-            ))}
+            <div className={styles.list}>
+                {filteredAndSortedPosts.map(({ created_time, message }) => (
+                    <div className={styles.listItem}>
+                        <div className={styles.date}>{new Date(created_time).toLocaleString()}</div>
+                        <div className={styles.message}>{message}</div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
