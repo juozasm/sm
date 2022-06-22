@@ -1,4 +1,3 @@
-import './base.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './login';
 import Posts from './posts';
