@@ -1,6 +1,6 @@
 ![login](https://user-images.githubusercontent.com/31696919/175015513-915d51fa-556f-422b-a6b0-5f3e8f0d58b0.jpg)
 
-![posts](https://user-images.githubusercontent.com/31696919/175017258-2b5b7671-76c2-4e1d-9a44-617e2933f7e0.jpg)
+![posts](https://user-images.githubusercontent.com/31696919/175019920-d817a789-d527-4123-bcb2-5791e9c7928b.jpg)
 
 
 # Supermetrics Assignment
