@@ -29,8 +29,8 @@ const Login = () => {
         <div className={styles.login}>
             <h1>Login</h1>
             <form className={styles.form} onSubmit={onSubmit}>
-                <input type="text" name="name" />
-                <input type="email" name="email" />
+                <input placeholder="Enter you're name" type="text" name="name" />
+                <input placeholder="Enter you're email"  type="email" name="email" />
                 <button className="button-primary" type="submit">
                     Go
                 </button>
