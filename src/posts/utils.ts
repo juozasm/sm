@@ -42,5 +42,5 @@ export const mapAndFilterPostsToSenders = (posts: Post[], searchString?: string)
                     }
                 ]
         )
-        .filter((a) => (searchString ? a[0].toLowerCase().includes(searchString.toLowerCase()) : true))
+        .filter((a) => (searchString ? a[1].from_name.toLowerCase().includes(searchString.toLowerCase()) : true))
         .sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
