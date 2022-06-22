@@ -1,6 +1,8 @@
 ![login](https://user-images.githubusercontent.com/31696919/175015513-915d51fa-556f-422b-a6b0-5f3e8f0d58b0.jpg)
 
-![posts](https://user-images.githubusercontent.com/31696919/174980570-d25f1bad-a96d-4f7b-a8b8-bd8c49d2d32b.jpg)
+![posts](https://user-images.githubusercontent.com/31696919/175017258-2b5b7671-76c2-4e1d-9a44-617e2933f7e0.jpg)
+
+
 # Supermetrics Assignment
 
 Made an app with vite React-ts config.
