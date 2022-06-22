@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: var(--black-color);
+}
+
+.logout {
+    font-weight: 700;
+    position: fixed;
+    bottom: 1rem;
+    right: 3rem;
+    background-color: var(--grey-color);
+    padding: 0.5rem;
+    border: 1px solid var(--black-color);
+}
+
+.logout:hover {
+    background-color: var(--dark-grey-color);
+}

@@ -1,5 +1,6 @@
 :root {
     --grey-color: #ccc;
+    --dark-grey-color: rgb(125, 125, 125);
     --white-color: #fff;
     --black-color: rgb(7, 7, 7);
 }
@@ -25,6 +26,7 @@ input {
     border: 1px solid var(--grey-color);
     border-radius: 5px;
     font-size: 1rem;
+    padding: 0.25rem;
 }
 
 input:focus {

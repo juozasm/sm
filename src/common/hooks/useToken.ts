@@ -14,6 +14,12 @@ const useToken = () => {
             },
             [context]
         ),
+        removeToken: useCallback(() => {
+            if (context?.[1]) {
+                context[1](undefined);
+                localStorage.removeItem('token');
+            }
+        }, [context]),
     };
 };
 

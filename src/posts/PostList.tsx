@@ -1,22 +1,44 @@
 import { useState, useMemo } from 'react';
-import useToken from '../common/hooks/useToken';
 import { Post } from '../common/types';
-import { orderPostsByCreationDate, Order } from './utils';
-import usePosts from './usePosts';
+import { orderPostsByCreationDate, Order, filterPosts } from './utils';
+import styles from './PostsList.module.css';
 
 type Props = {
     posts: Post[];
-    from_id?: string;
+    from_id: string;
 };
 
-const PostList = ({ posts }: Props) => {
-    console.log(posts);
-    const [search, searchString] = useState('');
+const PostList = ({ posts, from_id }: Props) => {
+    const [searchString, setSearchString] = useState('');
     const [activeOrder, setActiveOrder] = useState<Order>('desc');
 
-    const sortedPosts = useMemo(() => orderPostsByCreationDate(posts, activeOrder), [posts]);
+    const filteredAndSortedPosts = useMemo(() => {
+        const filterP = filterPosts(posts, from_id, searchString);
+        const sortedP = orderPostsByCreationDate(filterP, activeOrder);
+        return sortedP;
+    }, [posts, searchString, activeOrder, from_id]);
 
-    return <div></div>;
+    return (
+        <div className={styles.container}>
+            <div className={styles.controls}>
+                <div className={styles.sortOrder} onClick={() => setActiveOrder((o) => (o === 'asc' ? 'desc' : 'asc'))}>
+                    {activeOrder === 'desc' ? <>&#9660;</> : <>&#9650;</>}
+                </div>
+                <input
+                    className={styles.search}
+                    placeholder="Search posts..."
+                    type="search"
+                    onChange={(e) => setSearchString(e.target.value)}
+                />
+            </div>
+            {filteredAndSortedPosts.map(({ created_time, message }) => (
+                <div className={styles.listItem}>
+                    <div>{created_time}</div>
+                    <div>{message}</div>
+                </div>
+            ))}
+        </div>
+    );
 };
 
 export default PostList;

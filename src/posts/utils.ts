@@ -14,7 +14,17 @@ export const orderPostsByCreationDate = (posts: Post[], order: Order) =>
         return dateA > dateB ? 1 : -1;
     });
 
-export const mapPostsToSenders = (posts: Post[]) =>
+export const filterPosts = (posts: Post[], from_id: string, searchString?: string) =>
+    posts.filter((post) => {
+        if (from_id === post.from_id) {
+            if (searchString) {
+                return post.message.toLowerCase().includes(searchString.toLocaleLowerCase());
+            }
+            return true;
+        }
+        return false;
+    });
+export const mapAndFilterPostsToSenders = (posts: Post[], searchString: string) =>
     Object.entries(groupBy<Post>(posts, 'from_name'))
         .map(
             ([from_name, data]) =>
@@ -32,4 +42,5 @@ export const mapPostsToSenders = (posts: Post[]) =>
                     }
                 ]
         )
+        .filter((a) => (searchString ? a[0].toLowerCase().includes(searchString.toLowerCase()) : true))
         .sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
